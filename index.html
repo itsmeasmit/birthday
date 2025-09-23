@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="./flipcard 1.js" defer></script>
+  <script src="https://kit.fontawesome.com/19ab3aceb2.js" crossorigin="anonymous"></script>
+  <title>FLIPCARD</title>
+</head>
+<body>
+ <!-- book -->
+<div id="book" class="flipcard hidden">
+  <!-- PAGE -->
+  <div class="flipcard-inner">
+    <div class="flipcard-front">
+      <h1>HAPPY BIRTHDAY!<br>KANXU❤️</h1>
+    </div>
+    <div class="flipcard-back">
+      <h5>GYANI HUNU VANEKO MANNU😜<br><br>
+      MANY MANY HAPPY RETURNS OF THE DAY🥳</h5>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Button -->
+  <div class="btn-container">
+    <br> <br> <br> <br> 
+    <br> <br> <br> <br>
+    <br> <br> <br> <br>
+    <button id="wishBtn">
+
+
+        
+        🎉 Click Here 🎉</button>
+  </div>
+  
+  <!-- Audio -->
+<audio id="bdaySong" src="happy.mp3"></audio>
+
+
+<script>
+  const btn = document.getElementById("wishBtn");
+  const book = document.getElementById("book");
+  const msg = document.getElementById("wishMessage");
+  const song = document.getElementById("bdaySong");
+
+  if (btn) {
+    btn.addEventListener("click", async () => {
+      if (book) book.classList.remove("hidden");
+      btn.style.display = "none";
+      if (msg) msg.classList.toggle("hidden");
+
+      try {
+        song.currentTime = 0;
+        await song.play();
+        console.log("Audio is playing 🎶");
+      } catch (err) {
+        console.error("Playback failed:", err);
+        alert("⚠️ Could not play happy.mp3 — check the file path.");
+      }
+    });
+  }
+</script>
+
+
+
+</body>
+</html>
