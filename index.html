@@ -42,26 +42,31 @@
 <script>
   const btn = document.getElementById("wishBtn");
   const book = document.getElementById("book");
-  const msg = document.getElementById("wishMessage");
   const song = document.getElementById("bdaySong");
+  const flipcardInner = document.querySelector(".flipcard-inner");
 
-  if (btn) {
-    btn.addEventListener("click", async () => {
-      if (book) book.classList.remove("hidden");
-      btn.style.display = "none";
-      if (msg) msg.classList.toggle("hidden");
+  btn.addEventListener("click", () => {
+    book.classList.remove("hidden");
+    btn.style.display = "none";
 
-      try {
-        song.currentTime = 0;
-        await song.play();
-        console.log("Audio is playing 🎶");
-      } catch (err) {
-        console.error("Playback failed:", err);
-        alert("⚠️ Could not play happy.mp3 — check the file path.");
-      }
+    // ✅ Force audio play
+    song.currentTime = 0;
+    song.play().then(() => {
+      console.log("🎶 Audio started!");
+    }).catch(err => {
+      console.error("⚠️ Audio failed:", err);
+      alert("Could not play happy.mp3. Check if the file exists.");
+    });
+  });
+
+  // Flip on click
+  if (flipcardInner) {
+    flipcardInner.addEventListener("click", () => {
+      flipcardInner.classList.toggle("flipped");
     });
   }
 </script>
+
 
 
 
