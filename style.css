@@ -10,7 +10,11 @@ BODY{
     height: 450px;
     position: relative;
     top: -20px;
+<<<<<<< HEAD
+    left: 0px;
+=======
     left: -10px;
+>>>>>>> 4f552c677aae79044ab59347166406ee28a2a68e
     background-color: rgba(0, 204, 255, 1);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     margin: 60px auto;
