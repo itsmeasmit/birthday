@@ -13,26 +13,29 @@
   <!-- PAGE -->
   <div class="flipcard-inner">
     <div class="flipcard-front">
-      <h1>HAPPY BIRTHDAY!<br>KANXU❤️</h1>
     </div>
     <div class="flipcard-back">
-      <h5>GYANI HUNU VANEKO MANNU😜<br><br>
-      MANY MANY HAPPY RETURNS OF THE DAY🥳</h5>
-    </div>
-  </div>
+  <video id="bdayVideo" width="100%" height="100%" playsinline>
+    <source src="video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </div>
 
+
+  </div>
+</div>
 
   <!-- Button -->
   <div class="btn-container">
     <br> <br> <br> <br> 
     <br> <br> <br> <br>
-    <br> <br> <br> <br>
+    
+  
     <button id="wishBtn">
 
 
         
-        🎉 Click Here 🎉</button>
+       Click Here ➡️</button>
   </div>
   
   <!-- Audio -->
@@ -44,28 +47,37 @@
   const book = document.getElementById("book");
   const song = document.getElementById("bdaySong");
   const flipcardInner = document.querySelector(".flipcard-inner");
+  const video = document.getElementById("bdayVideo"); // 🎯 add this
 
   btn.addEventListener("click", () => {
     book.classList.remove("hidden");
     btn.style.display = "none";
 
-    // ✅ Force audio play
+    // ✅ Play birthday song
     song.currentTime = 0;
-    song.play().then(() => {
-      console.log("🎶 Audio started!");
-    }).catch(err => {
-      console.error("⚠️ Audio failed:", err);
-      alert("Could not play happy.mp3. Check if the file exists.");
-    });
+    song.play().catch(err => console.error("Song failed:", err));
   });
 
-  // Flip on click
+  // Flip the card
   if (flipcardInner) {
     flipcardInner.addEventListener("click", () => {
       flipcardInner.classList.toggle("flipped");
     });
   }
+
+  // ✅ Play video with sound when user clicks ON the video
+  if (video) {
+    video.addEventListener("click", () => {
+      if (video.paused) {
+        video.play().catch(err => console.error("Video play failed:", err));
+      } else {
+        video.pause(); // optional: toggle play/pause
+      }
+    });
+  }
+
 </script>
+
 
 
 
